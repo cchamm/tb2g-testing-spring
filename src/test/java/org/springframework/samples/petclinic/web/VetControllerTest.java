@@ -33,8 +33,18 @@ class VetControllerTest {
     VetController controller;
 
 
+    Map<String, Object> map = new HashMap<>();
+
+    List<Vet> vets = new ArrayList<>();
+
+
     @BeforeEach
     void setUp() {
+
+        map = new HashMap<>();
+        vets = new ArrayList<>();
+        vets.add(new Vet());
+        vets.add(new Vet());
 
     }
 
@@ -43,14 +53,7 @@ class VetControllerTest {
     void showVetList() {
 
         // given
-//        Model model = mock(Model.class);
-        Map<String, Object> map = new HashMap<>();
-        List<Vet> vets = new ArrayList<>();
-        vets.add(new Vet());
-        vets.add(new Vet());
-
         given(service.findVets()).willReturn(vets);
-
 
         // when
         var result = controller.showVetList(map);
@@ -67,17 +70,13 @@ class VetControllerTest {
     @Test
     void showResourcesVetList() {
         // given
-        List<Vet> vetList = new ArrayList<>();
-        vetList.add(new Vet());
-        vetList.add(new Vet());
-
-        given(service.findVets()).willReturn(vetList);
+        given(service.findVets()).willReturn(vets);
 
         // when
         Vets vetsReturn = controller.showResourcesVetList();
 
         // then
         assertThat(vetsReturn).isNotNull();
-        assertThat(vetsReturn.getVetList()).isEqualTo(vetList);
+        assertThat(vetsReturn.getVetList()).isEqualTo(vets);
     }
 }
