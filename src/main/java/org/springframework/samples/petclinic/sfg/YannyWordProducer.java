@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Profile("yanny")
-@Primary
 public class YannyWordProducer implements WordProducer{
     @Override
     public String getWord() {
