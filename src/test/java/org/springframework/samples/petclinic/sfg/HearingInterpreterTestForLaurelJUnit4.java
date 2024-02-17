@@ -1,6 +1,5 @@
 package org.springframework.samples.petclinic.sfg;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 // Bring up spring context
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = {BaseConfig.class, LaurelConfig.class})
-public class HearingInterpreterTestJUnit4 {
+public class HearingInterpreterTestForLaurelJUnit4 {
 
 
     @Autowired
