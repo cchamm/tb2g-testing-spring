@@ -11,7 +11,6 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
 @ActiveProfiles("externalized")
 @TestPropertySource("classpath:laurel.properties")
 @SpringJUnitConfig(classes = PropertiesTestForLaurel.TestConfig.class)
