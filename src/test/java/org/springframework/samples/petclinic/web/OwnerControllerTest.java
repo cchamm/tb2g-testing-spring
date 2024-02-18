@@ -17,12 +17,13 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.reset;
+import static org.mockito.Mockito.times;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -77,11 +78,11 @@ public class OwnerControllerTest {
     void testNewOwnerPostNoValid() throws Exception {
 
 
+
         //given
         mockMvc.perform(post("/owners/new")
                         .param("firstName", "Jimmy")
                         .param("lastName", "Buffett")
-//                        .param("Address", "123 Duyal st ")
                         .param("City", "Key West")
                 )
                 .andExpect(status().isOk())
@@ -140,7 +141,7 @@ public class OwnerControllerTest {
         owner.setId(1);
         owner.setLastName("Tom");
         given(clinicService.findOwnerByLastName("Tom")).willReturn(
-                new ArrayList<>(Arrays.asList(
+                new ArrayList<>(List.of(
                         owner
                 ))
         );
